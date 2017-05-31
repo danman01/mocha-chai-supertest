@@ -5,11 +5,11 @@ var express = require('express'),
     methodOverride = require('method-override'); //used to manipulate POST
 
 
-candies = [
-{id: 1, name: "Chewing Gum" , color: "Red"},
-{id: 2, name: "Pez"         , color: "Green"},
-{id: 3, name: "Marshmallow" , color: "Pink"},
-{id: 4, name: "Candy Stick" , color: "Blue"}
+const candies = [
+  {id: 1, name: "Chewing Gum" , color: "Red"},
+  {id: 2, name: "Pez"         , color: "Green"},
+  {id: 3, name: "Marshmallow" , color: "Pink"},
+  {id: 4, name: "Candy Stick" , color: "Blue"}
 ]
 
 
@@ -34,7 +34,7 @@ router.route('/:id').get(function(req,res){
   .delete(function(req, res){
     for(i in candies){
       if(candies[i]["id"] == req.params.id){
-        delete candies[i]
+        candies.splice(i, 1)
       }
     }
     res.json({message : 'deleted' });
@@ -55,4 +55,3 @@ router.put('/:id/edit', function(req, res) {
 
 
 module.exports = router
-
